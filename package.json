@@ -8,7 +8,8 @@
     "server": "nodemon Server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "client": "cd client && npm start",
-    "dev":"concurrently --kill-others-on-fail \" npm run server\" \"npm run client\""
+    "dev":"concurrently --kill-others-on-fail \" npm run server\" \"npm run client\"",
+    "heroku-postbuild":"cd client && npm i --only=dev && npm i && npm run build"
   },
   "author": "",
   "license": "ISC",
@@ -21,5 +22,9 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.12"
-  }
+  },
+  "engines": {
+    "node": "14.x"
+  },
+  "proxy":"http://localhost:8080/"
 }

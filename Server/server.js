@@ -17,14 +17,15 @@ db.on("error",(error)=>{
 })
 
 
-app.get("/",(req,res)=>{
-    res.send("hey");
-    connectAndAdd(res);
-});
-
-app.use("/student",studentRouter);
-
 app.listen(CONNECTION_URL,(err)=>{
     if(err)console.log(err);
     console.log("success");
 })
+app.use("/api/student",studentRouter);
+
+if(process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(_dirname,'../client/build')));
+    app.get('*',(req,res)=>{
+        res.sendFile(path.join(__dirname,'../client/build','index.html'))
+    })
+}
