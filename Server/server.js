@@ -5,7 +5,8 @@ const studentRouter = require("./routing/studentRouter");
 const app = express();
 const cors = require("cors");
 const mongodbClient = require("mongodb").MongoClient;
-const db = require("./DB")
+const db = require("./DB");
+const path = require("path");
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
@@ -21,7 +22,7 @@ app.listen(CONNECTION_URL,(err)=>{
     if(err)console.log(err);
     console.log("success");
 })
-app.use("/api",studentRouter);
+app.use("/api/student",studentRouter);
 
 if(process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(_dirname,'../client/build')));
