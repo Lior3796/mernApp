@@ -17,7 +17,6 @@ db.on("error",(error)=>{
     console.log("error");
 })
 
-
 app.listen(CONNECTION_URL,(err)=>{
     if(err)console.log(err);
     console.log("success");
@@ -31,4 +30,4 @@ if (process.env.NODE_ENV === 'production') {
     app.get('*', (req, res)=>{
         res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
     });
-  }
+}

@@ -1,6 +1,6 @@
 const express = require("express");
 const studentRouter = express.Router();
-const studentController = require("../Controllers/studentController");
+const studentController = require("../controllers/studentController");
 
 studentRouter.get("/", studentController.getStudents);
 studentRouter.get("/Student",studentController.getStudent);
