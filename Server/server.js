@@ -1,10 +1,10 @@
-const express = require("express");
-const CONNECTION_URL = process.env.CONNECTION_URL || 8080;
 const dotenv = require("dotenv").config();
+const CONNECTION_URL = process.env.CONNECTION_URL || 8080;
+const express = require("express");
+
 const studentRouter = require("./routing/studentRouter");
 const app = express();
 const cors = require("cors");
-const mongodbClient = require("mongodb").MongoClient;
 const db = require("./DB");
 const path = require("path");
 
