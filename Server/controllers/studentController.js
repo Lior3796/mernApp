@@ -1,4 +1,6 @@
 const studentModel = require('../models/studentModel');
+const validateData = require('../validation/validationData');
+const bcryptjs = require("bcryptjs");
 
 const newStudent ={
  firstName:"lior",
@@ -24,10 +26,23 @@ async function getStudents(req,res){
 async function getStudent(req,res){
     const {firstName,lastName,email,date,age} = req.body;
     try{
-        await studentModel.findOne({firstName:firstName},(err,result) =>{
-            if(err) throw err;
-            console.log(result);
-            res.json({message:"success",data:result})
+        await studentModel.findOne({email:email},(err,student) =>{
+            if(student) {
+                res.status(400).json({email:"Email already exists"})
+            }
+            else{
+                bcryptjs.genSalt(10,(err,salt)=>{
+                    bcryptjs.hash(email,salt,(err,hash)=>{
+                       if(err) throw err;
+                       req.body.pas
+
+                    })
+                })
+                
+                console.log(result);
+                res.json({message:"success",data:result})
+            }
+         
         })
     } catch(err) {
         res.json({message:"database problem", error:err})
@@ -36,6 +51,10 @@ async function getStudent(req,res){
 }
 
 async function createNewStudent(req,res){
+   const {errors,isValid} = validateData;
+   if(isValid){
+       res.status(400).json({error:ero})
+   } 
     try{
         await studentModel.insertMany(req.body.student,(err,result) =>{
             if(err) throw err;
