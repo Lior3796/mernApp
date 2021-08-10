@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node server/server.js",
     "setup":"npm i && cd client && npm i",
     "server": "nodemon Server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "client": "cd client && npm start",
     "dev":"concurrently --kill-others-on-fail \" npm run server\" \"npm run client\"",
-    "heroku-postbuild":"cd client && npm i --only=dev && npm i && npm run build"
+    "heroku-postbuild":"cd client && npm install --only=dev && npm install && npm run build"
   },
   "author": "",
   "license": "ISC",
