@@ -1,4 +1,4 @@
-const studentModel = require('../Models/studentModel.js');
+const studentModel = require('../models/studentModel');
 
 const newStudent ={
  firstName:"lior",
